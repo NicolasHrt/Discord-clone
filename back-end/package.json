@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev" : "nodemon index.js",
-    "live" : "node index.js",
-    "build" : "cd ../front-end && npm run build"
+    "live" : "npm install && node index.js",
+    "build" : "cd ../front-end && npm install & npm run build"
   },
   "author": "",
   "license": "ISC",
