@@ -16,14 +16,14 @@ app.use(express.static(path.join(__dirname, "public")));
 
 // Configuration de Socket.io avec le serveur HTTP
 
-const io = socketIo(server, {
-  cors: {
-    origin: "http://localhost:5173", // Remplacez ceci par l'URL de votre application front-end
-    methods: ["GET", "POST"],
-  },
-});
+// const io = socketIo(server, {
+//   cors: {
+//     origin: "http://localhost:5173", // Remplacez ceci par l'URL de votre application front-end
+//     methods: ["GET", "POST"],
+//   },
+// });
 
-// const io = socketIo(server);
+const io = socketIo(server);
 
 app.get("/", function (req, res) {
   res.sendFile(path.join(__dirname, "/public/index.html"));

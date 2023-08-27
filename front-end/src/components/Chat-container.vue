@@ -129,8 +129,8 @@
 
 <script>
 import io from "socket.io-client";
-const socket = io("http://localhost:3000");
-// const socket = io("https://discord-clone-44d5.onrender.com");
+// const socket = io("http://localhost:3000");
+const socket = io("https://discord-clone-44d5.onrender.com");
 const colors = [
     "text-blue-400",
     "text-indigo-400",
