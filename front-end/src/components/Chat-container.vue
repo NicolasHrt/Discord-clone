@@ -1,5 +1,5 @@
 <template>
-    <div class="bg-[#1e1f22] max-w-[280px] w-full">
+    <div class="bg-[#1e1f22] max-w-[280px] w-full hidden md:block">
         <div class="rounded-tl-lg bg-[#2b2d31]  min-h-[91vh] mb-3">
             <div class="mb-4 p-4 shadow-2xl  ">
                 <h2 class="text-white font-bold">League of legends</h2>
@@ -54,22 +54,24 @@
             </div>
         </div>
     </div>
-    <div class=" bg-[#313338]  w-full min-h-screen ">
+    <div class=" bg-[#313338] w-full min-h-screen ">
         <div class="mb-4 p-4 shadow-2xl  ">
             <h2 class="text-white font-bold">Gaming 🎮</h2>
         </div>
-        <div class="px-4">
-            <div id="chat-container" ref="chatContainer"
-                class="min-h-[790px] max-h-[790px] overflow-y-scroll mb-2 relative">
-                <div v-if="messages.length == 0"
-                    class="absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 text-gray-500 font-medium text-xl">
+
+        <div class="h-[90vh] px-4 relative">
+            <div class="h-[87%] md:h-[92%]" v-if="messages.length == 0">
+
+                <div class=" absolute top-1/2 right-1/2 translate-x-1/2 -translate-y-1/2 text-gray-500 font-medium text-xl">
                     Pas de message pour l'instant... </div>
+            </div>
+
+            <div id="chat-container" ref="chatContainer" v-else class="h-[87%] md:h-[92%]  overflow-y-scroll">
                 <div v-for="message in messages" class="flex gap-4 mb-5 ">
                     <div class="relative w-14 h-14">
                         <div class="bg-[#313338]  w-14 h-14 rounded-full overflow-hidden  ">
                             <img class="w-full h-full object-cover" :src="message.profilePic" alt="">
                         </div>
-
                     </div>
                     <div>
                         <div class="flex gap-4 items-end">
@@ -82,19 +84,19 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-            <div class="flex gap-4 items-center">
+
+            <div class="flex gap-4 items-center mt-2">
                 <input v-model="currentMessage"
                     class="bg-[#383a40] w-full rounded-md p-4 text-lg text-white font-medium outline-none"
                     placeholder="Envoyer un message dans le salon" type="text" name="" id="">
                 <button @click="sendMessage()"
                     class="bg-[#5865f2] text-white font-bold px-2 py-3 rounded-lg">Envoyer</button>
             </div>
-
         </div>
+
     </div>
-    <div class="bg-[#2b2d31] max-w-[300px] w-full ">
+    <div class="bg-[#2b2d31] max-w-[300px] w-full hidden md:block">
         <div class="p-4 max-h-screen overflow-y-scroll">
             <div class="mb-5">
                 <h2 class="font-medium text-xl  text-gray-400">En ligne - {{ users.length }}</h2>
@@ -127,8 +129,8 @@
 
 <script>
 import io from "socket.io-client";
-// const socket = io("http://localhost:3000");
-const socket = io("https://discord-clone-44d5.onrender.com/");
+const socket = io("http://localhost:3000");
+// const socket = io("https://discord-clone-44d5.onrender.com");
 const colors = [
     "text-blue-400",
     "text-indigo-400",
@@ -204,7 +206,7 @@ export default {
             this.userId = currentUserInfo.name;
 
             this.users = userInfo;
-   
+
         }
         );
 

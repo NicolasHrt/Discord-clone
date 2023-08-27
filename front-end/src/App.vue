@@ -2,7 +2,7 @@
 
 <template>
   <div class="min-h-screen flex">
-    <ServNavigation />
+    <ServNavigation class="hidden md:block" />
 
     <ChatContainer />
   </div>
